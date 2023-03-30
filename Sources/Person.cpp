@@ -10,13 +10,10 @@ Person::Person(std::string name, const unsigned age, const unsigned long long cn
     std::cout << "Constr Student with Cnp\n";
 }
 
-Person::Person(const Person& other)
-{
-    Name= other.Name;
-    Age = other.Age;
-    _cnp= other._cnp;
-    std::cout << "Constr de copiere Person\n";
-}
+//Person::Person(const Person& other) : Name(other.Name), Age(other.Age), _cnp(other)
+//{
+//    std::cout << "Constr de copiere Person\n";
+//}
 
 Person::~Person()
 {
