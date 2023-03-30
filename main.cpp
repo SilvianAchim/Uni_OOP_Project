@@ -15,9 +15,13 @@ int main()
     silvian_account.DepositToAnAccount(cont_curent, 1000);
     silvian_account.WithdrawFromAnAccount(cont_curent, 500);
 
+    silvian_account.ChangeAccountName(cont_curent, "newAccount");
     silvian_account.DepositToAnAccount(cont_economii, 10000);
+    silvian_account.DeleteAccount(cont_economii);
 
-    ing.DeleteBankAccount(silvian_account);
+    const auto my_account = ing.GetAPersonsAccount(achim_silvian);
+
+    ing.DeleteBankAccount(my_account);
 
     return 0;
 }

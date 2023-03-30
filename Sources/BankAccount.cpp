@@ -14,11 +14,6 @@ Account BankAccount::CreateNewAccount(const std::string& accountName, const Curr
     return *prev(_accounts.end());
 }
 
-std::vector<Account> BankAccount::GetAccounts()
-{
-    return _accounts;
-}
-
 void BankAccount::DepositToAnAccount(const Account& account, const unsigned long long& amount)
 {
     const auto accounts_iterator = GetAccountIterator(account);
