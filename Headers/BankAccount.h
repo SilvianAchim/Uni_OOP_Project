@@ -10,7 +10,8 @@ public:
     Person Owner;
 
     explicit BankAccount(const Person& person): Owner(person) {}
-
+    BankAccount(const BankAccount& other): Owner(other.Owner), _accounts(other._accounts){}
+    ~BankAccount() {std::cout<<"Bank destructor!;";}
     Account CreateNewAccount(const std::string& accountName, const Currency& currency);
     void DeleteAccount(const Account& account);
     void ChangeAccountName(const Account& account, std::string newName);
