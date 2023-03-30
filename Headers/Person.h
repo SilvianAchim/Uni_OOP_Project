@@ -10,7 +10,7 @@ public:
 
     Person(std::string name, unsigned int age);
     Person(std::string name, unsigned int age, unsigned long long cnp);
-    explicit Person(const Person& other);
+    Person(const Person& other);
     ~Person();
 
     bool operator==(const Person& person) const;
