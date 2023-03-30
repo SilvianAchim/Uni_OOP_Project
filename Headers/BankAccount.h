@@ -9,7 +9,7 @@ class BankAccount
 public:
     Person Owner;
 
-    BankAccount(const Person& person): Owner(person) {}
+    explicit BankAccount(Person person): Owner(person) {}
 
     Account CreateNewAccount(const std::string& accountName, const Currency& currency);
     void DeleteAccount(const Account& account);
