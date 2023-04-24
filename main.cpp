@@ -1,27 +1,38 @@
 #include "Headers/Bank.h"
+#include "Headers/BankAccount.h"
+#include "Headers/Currency.h"
+#include "Headers/Error.h"
+#include "Headers/Person.h"
 
-int main()
-{
-    const auto achim_silvian = Person("Achim Silvian", 19);
+int main() {
+    try {
+        Person person("John Doe", 18);
+        std::shared_ptr<Currency> currency = std::make_shared<Currency>("USD", '$');
 
-    auto ing = Bank("ING", "INGBROBUXXX");
+        Bank bank("Bank of America", "BOFAUS3N");
+        BankAccount bankAccount(person);
+        bank.AddBankAccount(bankAccount);
 
-    auto silvian_account = BankAccount(achim_silvian);
-    ing.AddBankAccount(silvian_account);
+        Account* savingsAccount = bankAccount.CreateNewAccount("John's Savings", currency, true);
+        bankAccount.DepositToAnAccount(*savingsAccount, 1000);
+        bankAccount.WithdrawFromAnAccount(*savingsAccount, 500);
 
-    const auto cont_economii = silvian_account.CreateNewAccount("Economii", Currency("US Dollar", '$'));
-    const auto cont_curent = silvian_account.CreateNewAccount("Cont curent", Currency("Euro", 'e'));
+        Account* checkingAccount = bankAccount.CreateNewAccount("John's Checking", currency, false);
+        bankAccount.DepositToAnAccount(*checkingAccount, 2000);
+        bankAccount.WithdrawFromAnAccount(*checkingAccount, 1000);
 
-    silvian_account.DepositToAnAccount(cont_curent, 1000);
-    silvian_account.WithdrawFromAnAccount(cont_curent, 500);
+        BankAccount retrievedBankAccount = bank.GetAPersonsAccount(person);
+        bankAccount.ChangeAccountName(*savingsAccount, "John's Updated Savings");
+        bankAccount.DeleteAccount(*savingsAccount);
 
-    silvian_account.ChangeAccountName(cont_curent, "newAccount");
-    silvian_account.DepositToAnAccount(cont_economii, 10000);
-    silvian_account.DeleteAccount(cont_economii);
+        bankAccount.WithdrawFromAnAccount(*checkingAccount, 5000);
 
-    const auto my_account = ing.GetAPersonsAccount(achim_silvian);
-
-    ing.DeleteBankAccount(my_account);
+        bank.DeleteBankAccount(bankAccount);
+    } catch (const BankAccountError& e) {
+        std::cerr << "BankAccountError: " << e.what() << std::endl;
+    } catch (const BaseError& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 
     return 0;
 }

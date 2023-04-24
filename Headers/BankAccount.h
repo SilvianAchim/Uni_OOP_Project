@@ -4,27 +4,32 @@
 #include "Account.h"
 #include "Person.h"
 
-class BankAccount
-{
+class BankAccount {
 public:
     Person Owner;
 
-    explicit BankAccount(const Person& person): Owner(person) {}
-    BankAccount(const BankAccount& other): Owner(other.Owner), _accounts(other._accounts){}
-    ~BankAccount() {std::cout<<"Bank destructor!;";}
-    Account CreateNewAccount(const std::string& accountName, const Currency& currency);
-    void DeleteAccount(const Account& account);
-    void ChangeAccountName(const Account& account, std::string newName);
-    void DepositToAnAccount(const Account& account, const unsigned long long& amount);
-    void WithdrawFromAnAccount(const Account& account, const unsigned long long& amount);
+    explicit BankAccount(const Person &person) : Owner(person) {}
 
-    bool operator==(const BankAccount& bankAccount) const;
+    BankAccount(const BankAccount &other) : Owner(other.Owner), _accounts(other._accounts) {}
 
-    friend std::ostream& operator<<(std::ostream& os, const BankAccount& bankAccount);
+    ~BankAccount() { std::cout << "Bank destructor!" << std::endl; }
+
+    Account * CreateNewAccount(const std::string &accountName, const std::shared_ptr<Currency> &currency, bool isSavings);
+
+    void DeleteAccount(const Account &account);
+
+    void ChangeAccountName(const Account &account, std::string newName);
+
+    void DepositToAnAccount(const Account &account, const unsigned long long &amount);
+
+    void WithdrawFromAnAccount(const Account &account, const unsigned long long &amount);
+
+    bool operator==(const BankAccount &bankAccount) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const BankAccount &bankAccount);
 
 private:
-    std::vector<Account> _accounts;
+    std::vector<std::shared_ptr<Account>> _accounts;
 
-    std::vector<Account>::iterator GetAccountIterator(const Account& account);
+    typename std::vector<std::shared_ptr<Account>>::iterator GetAccountIterator(const Account &account);
 };
-

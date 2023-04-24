@@ -9,7 +9,7 @@ public:
     unsigned int Age;
 
     Person(std::string name, unsigned int age);
-    Person(std::string name, unsigned int age, unsigned long long cnp);
+
     ~Person();
 
     bool operator==(const Person& person) const;

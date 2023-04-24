@@ -1,20 +1,20 @@
 #pragma once
 #include <utility>
 #include <vector>
+#include "Error.h"
 
 #include "BankAccount.h"
 
-class Bank
-{
+class Bank {
 public:
     std::string Name;
     std::string SwiftCode;
 
-    Bank(std::string name, std::string swiftCode): Name(std::move(name)), SwiftCode(std::move(swiftCode)) {  }
+    Bank(std::string name, std::string swiftCode) : Name(std::move(name)), SwiftCode(std::move(swiftCode)) {}
 
     void AddBankAccount(const BankAccount& bankAccount);
     void DeleteBankAccount(const BankAccount& bankAccount);
-    BankAccount GetAPersonsAccount(Person person);
+    BankAccount GetAPersonsAccount(const Person& person);
 
     friend std::ostream& operator<<(std::ostream& os, const Bank& bank);
 
