@@ -8,12 +8,6 @@ class BankAccount {
 public:
     Person Owner;
 
-    explicit BankAccount(const Person &person) : Owner(person) {}
-
-    BankAccount(const BankAccount &other) : Owner(other.Owner), _accounts(other._accounts) {}
-
-    ~BankAccount() { std::cout << "Bank destructor!" << std::endl; }
-
     Account * CreateNewAccount(const std::string &accountName, const std::shared_ptr<Currency> &currency, bool isSavings);
 
     void DeleteAccount(const Account &account);
@@ -28,8 +22,16 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const BankAccount &bankAccount);
 
-private:
-    std::vector<std::shared_ptr<Account>> _accounts;
+    explicit BankAccount(const Person &person) : Owner(person) {}
+    BankAccount(const BankAccount &other) : Owner(other.Owner), Accounts(other.Accounts) {}
+    ~BankAccount() { std::cout << "Bank destructor!" << std::endl; }
+    BankAccount& operator=(const BankAccount& other){
+        Owner = other.Owner;
+        Accounts = other.Accounts;
+        return *this;
+    }
 
+private:
+    std::vector<std::shared_ptr<Account>> Accounts;
     typename std::vector<std::shared_ptr<Account>>::iterator GetAccountIterator(const Account &account);
 };

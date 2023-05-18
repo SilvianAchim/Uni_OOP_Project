@@ -5,20 +5,18 @@
 class Person
 {
 public:
-    std::string Name;
-    unsigned int Age;
-
     Person(std::string name, unsigned int age);
-
     ~Person();
-
+    std::string GetName() const;
     bool operator==(const Person& person) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Person& person);
 
 private:
-    unsigned long long _cnp;
-    std::string _email;
+    std::string Name;
+    unsigned int Age;
+    unsigned long long Cnp;
+    std::string Email;
 
     static unsigned long long GenerateRandomCnp();
 };

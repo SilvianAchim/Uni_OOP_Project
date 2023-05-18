@@ -1,6 +1,6 @@
 #include "../Headers/Person.h"
 
-Person::Person(std::string name, const unsigned age): Name(std::move(name)), Age(age), _cnp(GenerateRandomCnp())
+Person::Person(std::string name, const unsigned age): Name(std::move(name)), Age(age), Cnp(GenerateRandomCnp())
 {
     std::cout << "Constr Student without Cnp\n";
 }
@@ -18,10 +18,14 @@ std::ostream& operator<<(std::ostream& os, const Person& person)
     
 bool Person::operator==(const Person& person) const
 {
-    return _cnp == person._cnp;
+    return Cnp == person.Cnp;
 }
 
 unsigned long long Person::GenerateRandomCnp()
 {
     return rand() % 1000; // NOLINT(cert-msc50-cpp)
+}
+
+std::string Person::GetName() const {
+    return Name;
 }

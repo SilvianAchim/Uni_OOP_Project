@@ -1,4 +1,6 @@
-# OOP Template
+# Banking System
+
+Simple banking system for the OOP project at the university.
 
 ### Tema 0
 

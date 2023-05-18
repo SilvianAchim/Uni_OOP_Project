@@ -3,7 +3,7 @@
 #include "../Headers/CheckingAccount.h"
 
 typename std::vector<std::shared_ptr<Account>>::iterator BankAccount::GetAccountIterator(const Account& account) {
-    auto accounts_iterator = std::find_if(_accounts.begin(), _accounts.end(), [&account](const std::shared_ptr<Account>& accPtr) {
+    auto accounts_iterator = std::find_if(Accounts.begin(), Accounts.end(), [&account](const std::shared_ptr<Account>& accPtr) {
         return *accPtr == account;
     });
     return accounts_iterator;
@@ -16,34 +16,34 @@ Account* BankAccount::CreateNewAccount(const std::string& accountName, const std
     } else {
         newAccount = std::make_shared<CheckingAccount>(accountName, currency);
     }
-    _accounts.push_back(newAccount);
+    Accounts.push_back(newAccount);
     return newAccount.get();
 }
 
 void BankAccount::DeleteAccount(const Account& account) {
     auto accounts_iterator = GetAccountIterator(account);
-    if (accounts_iterator != _accounts.end()) {
-        _accounts.erase(accounts_iterator);
+    if (accounts_iterator != Accounts.end()) {
+        Accounts.erase(accounts_iterator);
     }
 }
 
 void BankAccount::ChangeAccountName(const Account& account, std::string newName) {
     auto accounts_iterator = GetAccountIterator(account);
-    if (accounts_iterator != _accounts.end()) {
-        (*accounts_iterator)->Name = std::move(newName);
+    if (accounts_iterator != Accounts.end()) {
+        (*accounts_iterator)->GetName() = std::move(newName);
     }
 }
 
 void BankAccount::DepositToAnAccount(const Account& account, const unsigned long long& amount) {
     auto accounts_iterator = GetAccountIterator(account);
-    if (accounts_iterator != _accounts.end()) {
+    if (accounts_iterator != Accounts.end()) {
         (*accounts_iterator)->Deposit(amount);
     }
 }
 
 void BankAccount::WithdrawFromAnAccount(const Account& account, const unsigned long long& amount) {
     auto accounts_iterator = GetAccountIterator(account);
-    if (accounts_iterator != _accounts.end()) {
+    if (accounts_iterator != Accounts.end()) {
         (*accounts_iterator)->Withdraw(amount);
     }
 }
@@ -53,6 +53,6 @@ bool BankAccount::operator==(const BankAccount& bankAccount) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const BankAccount& bankAccount) {
-    os << "Bank account owner: " << bankAccount.Owner.Name << "\n";
+    os << "Bank account owner: " << bankAccount.Owner.GetName() << "\n";
     return os;
 }
