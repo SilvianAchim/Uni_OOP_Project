@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 
 #include "Account.h"
 #include "Person.h"
