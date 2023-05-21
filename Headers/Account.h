@@ -4,11 +4,11 @@
 #include <iostream>
 
 #include "Currency.h"
-#include "PointerAttribute.h"
+#include "SharedPtrManager.h"
 
-class Account : public PointerAttribute<Currency> {
+class Account : public SharedPtrManager<Currency> {
 public:
-    Account(std::string name, std::shared_ptr<Currency> currency) : PointerAttribute(std::move(currency)), Name(std::move(name)), Amount(0) {}
+    Account(std::string name, std::shared_ptr<Currency> currency) : SharedPtrManager(std::move(currency)), Name(std::move(name)), Amount(0) {}
     virtual ~Account() = default;
 
     virtual Account* Clone() const = 0;
