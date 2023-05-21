@@ -1,5 +1,5 @@
 #include "../Headers/Dollar.h"
 
-float Dollar::GetEuroConversionRate() {
+double Dollar::GetEuroConversionRate() {
     return 0.92;
 }
