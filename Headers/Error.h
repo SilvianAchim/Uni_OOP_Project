@@ -11,12 +11,12 @@ private:
     std::string message;
 };
 
-class AccountError : public BaseError {
+class NonexistentAccount : public BaseError {
 public:
-    explicit AccountError(const std::string& msg) : BaseError(msg) {}
+    explicit NonexistentAccount(const std::string& msg) : BaseError(msg) {}
 };
 
-class BankAccountError : public BaseError {
+class AccountAlreadyExists : public BaseError {
 public:
-    explicit BankAccountError(const std::string& msg) : BaseError(msg) {}
+    explicit AccountAlreadyExists(const std::string& msg) : BaseError(msg) {}
 };

@@ -13,9 +13,12 @@ public:
 
     virtual Account* Clone() const = 0;
 
+    std::string GetName();
+
     virtual void Deposit(unsigned long long value) = 0;
     virtual void Withdraw(unsigned long long value) = 0;
-    std::string GetName();
+    virtual void ChangeName(const std::string& newName);
+
     bool operator==(const Account& account) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Account& account);

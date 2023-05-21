@@ -2,7 +2,6 @@
 
 Person::Person(std::string name, const unsigned age): Name(std::move(name)), Age(age), Cnp(GenerateRandomCnp())
 {
-    std::cout << "Constr Student without Cnp\n";
 }
 
 Person::~Person()
