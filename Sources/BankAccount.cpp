@@ -30,7 +30,7 @@ void BankAccount::ChangeAccountName(const std::string& newName) {
 }
 
 void BankAccount::CreateAccount(AccountType accountType, const std::shared_ptr<Currency> &currency) {
-    if(account.get() != nullptr ){
+    if(account != nullptr ){
         throw AccountAlreadyExists("Tried to create an account, even tho an account already exists!");
     }
 
