@@ -8,7 +8,7 @@
 
 class Account  {
 public:
-    Account(std::string name, const std::shared_ptr<Currency>& currency_) : Name(std::move(name)), Amount(0), currency(currency_) {}
+    Account(std::string name, const Currency& currency_) : Name(std::move(name)), Amount(0), currency(currency_) {}
     virtual ~Account() = default;
 
     virtual Account* Clone() const = 0;
@@ -26,5 +26,5 @@ public:
 protected:
     std::string Name;
     unsigned long long Amount;
-    std::shared_ptr<Currency> currency;
+    Currency currency;
 };

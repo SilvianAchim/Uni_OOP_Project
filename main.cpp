@@ -4,11 +4,12 @@
 #include "Headers/Currency.h"
 #include "Headers/Error.h"
 #include "Headers/Person.h"
+#include "Headers/Dollar.h"
 
 int main() {
     try {
         Person person("John Doe", 18);
-        std::shared_ptr<Currency> dollar = std::make_shared<Currency>("USD", '$');
+        const Dollar dollar;
 
         Bank bank("Bank of America", "BOFAUS3N");
 

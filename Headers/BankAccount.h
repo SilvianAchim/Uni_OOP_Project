@@ -11,7 +11,7 @@ public:
     void Deposit(const unsigned long long &amount);
     void Withdraw(const unsigned long long &amount);
 
-    void CreateAccount(AccountType accountType, const std::shared_ptr<Currency>& currency);
+    void CreateAccount(AccountType accountType, const Currency& currency);
     void DeleteAccount();
 
     bool operator==(const BankAccount &bankAccount) const;
