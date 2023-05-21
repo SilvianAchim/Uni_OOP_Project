@@ -6,6 +6,6 @@ class Dollar : public Currency {
 public:
     Dollar() : Currency("US Dollar", '$') {}
 
-    float GetEuroConversionRate();
+    double GetEuroConversionRate();
 private:
 };
