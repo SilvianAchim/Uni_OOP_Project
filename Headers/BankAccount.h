@@ -19,15 +19,19 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const BankAccount &bankAccount);
 
     explicit BankAccount(const Person &person) : Owner(person) {}
-    BankAccount(const BankAccount &other) : Owner(other.Owner), account(other.account) {}
+    BankAccount(BankAccount const &other) : Owner(other.Owner), account(other.account) {}
     ~BankAccount() { std::cout << "Bank destructor!" << std::endl; }
-    BankAccount& operator=(const BankAccount& other){
-        Owner = other.Owner;
-        account = other.account;
+    BankAccount& operator=(BankAccount other){
+        swap(other);
         return *this;
     }
 
 private:
     Person Owner;
     std::shared_ptr<Account> account;
+
+    void swap(BankAccount& other) noexcept{
+        std::swap(Owner, other.Owner);
+        std::swap(account, other.account);
+    }
 };
