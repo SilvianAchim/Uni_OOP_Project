@@ -9,3 +9,8 @@ void SavingsAccount::Withdraw(unsigned long long value) {
         Amount -= value;
     }
 }
+
+std::ostream &operator<<(std::ostream &os, const SavingsAccount &savingsAccount) {
+    os << "Savings Account, Name: " << savingsAccount.Name << " Amount: " << savingsAccount.Amount << std::endl;
+    return os;
+}

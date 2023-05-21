@@ -7,6 +7,8 @@ public:
         return new SavingsAccount(*this);
     }
 
+    friend std::ostream &operator<<(std::ostream &os, const SavingsAccount &savingsAccount);
+
     void Deposit(unsigned long long value) override;
     void Withdraw(unsigned long long value) override;
 };

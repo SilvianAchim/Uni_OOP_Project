@@ -6,4 +6,6 @@ public:
     CheckingAccount* Clone() const override {
         return new CheckingAccount(*this);
     }
+
+    friend std::ostream &operator<<(std::ostream &os, const CheckingAccount &checkingAccount);
 };
