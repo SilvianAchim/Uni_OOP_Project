@@ -2,13 +2,13 @@
 #include <string>
 #include <utility>
 #include <iostream>
+#include <memory>
 
 #include "Currency.h"
-#include "SharedPtrManager.h"
 
-class Account : public SharedPtrManager<Currency> {
+class Account  {
 public:
-    Account(std::string name, std::shared_ptr<Currency> currency) : SharedPtrManager(std::move(currency)), Name(std::move(name)), Amount(0) {}
+    Account(std::string name, const std::shared_ptr<Currency>& currency_) : Name(std::move(name)), Amount(0), currency(currency_) {}
     virtual ~Account() = default;
 
     virtual Account* Clone() const = 0;
@@ -26,4 +26,5 @@ public:
 protected:
     std::string Name;
     unsigned long long Amount;
+    std::shared_ptr<Currency> currency;
 };

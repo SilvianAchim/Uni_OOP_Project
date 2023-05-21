@@ -1,3 +1,4 @@
+#include <memory>
 #include "Headers/Bank.h"
 #include "Headers/BankAccount.h"
 #include "Headers/Currency.h"
