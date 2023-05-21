@@ -5,6 +5,8 @@
 #include "Headers/Error.h"
 #include "Headers/Person.h"
 #include "Headers/Dollar.h"
+#include "Headers/SavingsAccount.h"
+#include "Headers/CheckingAccount.h"
 
 int main() {
     try {
@@ -37,6 +39,16 @@ int main() {
 
         bankAccount.CreateAccount(AccountType::CheckingAccount, dollar);
         std::cout<<bankAccount;
+
+        //Dynamic_cast example:
+        std::cout<<"Dynamic Cast: \n";
+        auto* baseCurrency = new Currency("Dollar", '$');
+        std::cout<< *baseCurrency;
+        auto* dollarCurrency = dynamic_cast<Dollar*>(baseCurrency);
+        std::cout << dollarCurrency->GetEuroConversionRate() << std::endl;
+
+        delete dollarCurrency;
+        delete baseCurrency;
 
     } catch (const AccountAlreadyExists& e) {
         std::cerr << "Error: " << e.what() << std::endl;
