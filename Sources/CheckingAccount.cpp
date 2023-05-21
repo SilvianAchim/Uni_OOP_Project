@@ -4,3 +4,13 @@ std::ostream &operator<<(std::ostream &os, const CheckingAccount &checkingAccoun
     os << "Checking Account, Name: " << checkingAccount.Name << " Amount: " << checkingAccount.Amount << std::endl;
     return os;
 }
+
+void CheckingAccount::Deposit(unsigned long long int value) {
+    Amount += value;
+}
+
+void CheckingAccount::Withdraw(unsigned long long int value) {
+    if (value >= Amount) {
+        Amount -= value;
+    }
+}

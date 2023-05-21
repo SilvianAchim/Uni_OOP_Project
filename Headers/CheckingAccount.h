@@ -7,5 +7,8 @@ public:
         return new CheckingAccount(*this);
     }
 
+    void Deposit(unsigned long long value) override;
+    void Withdraw(unsigned long long value) override;
+
     friend std::ostream &operator<<(std::ostream &os, const CheckingAccount &checkingAccount);
 };

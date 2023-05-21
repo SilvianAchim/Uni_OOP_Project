@@ -13,8 +13,8 @@ public:
 
     virtual Account* Clone() const = 0;
 
-    virtual void Deposit(unsigned long long value);
-    virtual void Withdraw(unsigned long long value);
+    virtual void Deposit(unsigned long long value) = 0;
+    virtual void Withdraw(unsigned long long value) = 0;
     std::string GetName();
     bool operator==(const Account& account) const;
 

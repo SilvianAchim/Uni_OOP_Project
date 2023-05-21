@@ -1,15 +1,5 @@
 #include "../Headers/Account.h"
 
-void Account::Deposit(const unsigned long long value) {
-    Amount += value;
-}
-
-void Account::Withdraw(const unsigned long long value) {
-    if (value >= Amount) {
-        Amount -= value;
-    }
-}
-
 bool Account::operator==(const Account& account) const {
     return account.Name == Name;
 }
