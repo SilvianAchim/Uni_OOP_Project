@@ -20,7 +20,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const BankAccount &bankAccount);
 
     explicit BankAccount(const Person &person) : Owner(person) {}
-    BankAccount(BankAccount const &other) : Owner(other.Owner), account(other.account->Clone()) {}
+    BankAccount(BankAccount const &other) : Owner(other.Owner), account(other.account) {}
     ~BankAccount() { std::cout << "Bank destructor!" << std::endl; }
     BankAccount& operator=(BankAccount other){
         swap(other);
