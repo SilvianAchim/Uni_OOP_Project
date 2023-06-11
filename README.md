@@ -52,7 +52,7 @@ Simple banking system for the OOP project at the university.
 - [x] o funcție șablon (template) cu sens; minim 2 instanțieri
 - [x] o clasă șablon cu sens; minim 2 instanțieri
 <!-- - [ ] o specializare pe funcție/clasă șablon -->
-- [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
+- [x] tag de `git`: de exemplu `v0.3` sau `v1.0`
 
 ## Resurse
 
