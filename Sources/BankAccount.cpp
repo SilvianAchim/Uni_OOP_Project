@@ -44,6 +44,9 @@ void BankAccount::CreateAccount(AccountType accountType, const Currency &currenc
     if (accountType == AccountType::SavingsAccount) {
         account = AccountFactory::GetSavingsAccount(currency);
     }
+    if(accountType == AccountType::StudentAccount){
+        account = AccountFactory::GetStudentAccount(currency);
+    }
 }
 
 void BankAccount::DeleteAccount() {

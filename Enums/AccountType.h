@@ -2,6 +2,7 @@
 
 enum class AccountType{
     SavingsAccount,
-    CheckingAccount
+    CheckingAccount,
+    StudentAccount
 };
 
