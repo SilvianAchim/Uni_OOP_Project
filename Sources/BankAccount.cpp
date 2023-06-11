@@ -34,15 +34,15 @@ void BankAccount::ChangeAccountName(const std::string& newName) {
 }
 
 void BankAccount::CreateAccount(AccountType accountType, const Currency &currency) {
-    if(account != nullptr ){
+    if (account != nullptr) {
         throw AccountAlreadyExists("Tried to create an account, even tho an account already exists!");
     }
 
-    if(accountType == AccountType::CheckingAccount){
-        account = std::make_shared<CheckingAccount>("CheckingAccount", currency);
+    if (accountType == AccountType::CheckingAccount) {
+        account = AccountFactory::GetCheckingAccount(currency);
     }
-    if(accountType == AccountType::SavingsAccount){
-        account = std::make_shared<SavingsAccount>("SavingsAccount", currency);
+    if (accountType == AccountType::SavingsAccount) {
+        account = AccountFactory::GetSavingsAccount(currency);
     }
 }
 

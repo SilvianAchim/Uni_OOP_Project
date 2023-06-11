@@ -6,6 +6,7 @@
 #include "Person.h"
 #include "../Enums/AccountType.h"
 #include "Logger.h"
+#include "AccountFactory.h"
 
 class BankAccount {
 public:

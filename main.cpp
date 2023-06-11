@@ -26,7 +26,7 @@ int main() {
         bankAccount.Withdraw(500);
         bankAccount.ChangeAccountName("Main Savings");
 
-        //bankAccount.CreateAccount(AccountType::CheckingAccount, dollar); // Uncomment for Exception
+        //bankAccount.CreateAccount(AccountType::GetCheckingAccount, dollar); // Uncomment for Exception
 
         std::cout<< bankAccount;
 
