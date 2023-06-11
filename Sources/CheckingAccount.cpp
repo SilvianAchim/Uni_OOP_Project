@@ -14,3 +14,7 @@ void CheckingAccount::Withdraw(unsigned long long int value) {
         Amount -= value;
     }
 }
+
+std::shared_ptr<Account> CheckingAccount::Clone() const {
+    return std::make_shared<CheckingAccount>(*this);
+}

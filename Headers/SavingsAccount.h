@@ -3,9 +3,7 @@
 class SavingsAccount : public Account {
 public:
     SavingsAccount(std::string name, const Currency& currency) : Account(std::move(name), currency) {}
-    SavingsAccount* Clone() const override {
-        return new SavingsAccount(*this);
-    }
+    std::shared_ptr<Account> Clone() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const SavingsAccount &savingsAccount);
 

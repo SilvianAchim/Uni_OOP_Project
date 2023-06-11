@@ -11,7 +11,7 @@ public:
     Account(std::string name, const Currency& currency_) : Name(std::move(name)), Amount(0), currency(currency_) {}
     virtual ~Account() = default;
 
-    virtual Account* Clone() const = 0;
+    virtual std::shared_ptr<Account> Clone() const = 0;
 
     std::string GetName();
 

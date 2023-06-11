@@ -14,3 +14,7 @@ std::ostream &operator<<(std::ostream &os, const SavingsAccount &savingsAccount)
     os << "Savings Account, Name: " << savingsAccount.Name << " Amount: " << savingsAccount.Amount << std::endl;
     return os;
 }
+
+std::shared_ptr<Account> SavingsAccount::Clone() const {
+    return std::make_shared<SavingsAccount>(*this);
+}
