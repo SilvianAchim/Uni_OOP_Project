@@ -5,6 +5,7 @@
 #include "Account.h"
 #include "Person.h"
 #include "../Enums/AccountType.h"
+#include "Logger.h"
 
 class BankAccount {
 public:
@@ -30,6 +31,7 @@ public:
 private:
     Person Owner;
     std::shared_ptr<Account> account;
+    Logger<BankAccount> logger;
 
     void swap(BankAccount& other) noexcept{
         std::swap(Owner, other.Owner);

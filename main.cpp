@@ -7,8 +7,11 @@
 #include "Headers/Dollar.h"
 #include "Headers/SavingsAccount.h"
 #include "Headers/CheckingAccount.h"
+#include "Headers/Logger.h"
 
 int main() {
+    Logger<void> logger{};
+
     try {
         Person person("John Doe", 18);
         const Dollar dollar;
@@ -51,9 +54,9 @@ int main() {
         delete baseCurrency;
 
     } catch (const AccountAlreadyExists& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        logger.LogError(e.what());
     } catch (const NonexistentAccount& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        logger.LogError(e.what());
     }
 
     return 0;

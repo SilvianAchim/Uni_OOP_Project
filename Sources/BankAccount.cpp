@@ -16,10 +16,13 @@ std::ostream& operator<<(std::ostream& os, const BankAccount& bankAccount) {
 
 void BankAccount::Deposit(const unsigned long long int &amount) {
     account->Deposit(amount);
+
+    logger.LogSuccess("Deposited to " + account->GetName() + "  " + std::to_string(amount));
 }
 
 void BankAccount::Withdraw(const unsigned long long int &amount) {
     account->Withdraw(amount);
+    logger.LogSuccess("Withdrew from " + account->GetName() + "  " + std::to_string(amount));
 }
 
 void BankAccount::ChangeAccountName(const std::string& newName) {
@@ -27,6 +30,7 @@ void BankAccount::ChangeAccountName(const std::string& newName) {
         throw NonexistentAccount("Tried to change an nonexistent account's name!");
     }
     account->ChangeName(newName);
+    logger.LogSuccess("Changed account name to " + newName);
 }
 
 void BankAccount::CreateAccount(AccountType accountType, const Currency &currency) {
@@ -44,5 +48,6 @@ void BankAccount::CreateAccount(AccountType accountType, const Currency &currenc
 
 void BankAccount::DeleteAccount() {
     account.reset();
+    logger.LogInformation("Deleting bank account");
 }
 

@@ -4,6 +4,7 @@
 #include "Error.h"
 
 #include "BankAccount.h"
+#include "Logger.h"
 
 class Bank {
 public:
@@ -18,4 +19,5 @@ private:
     std::vector<BankAccount> BankAccounts;
     std::string Name;
     std::string SwiftCode;
+    Logger<Bank> logger;
 };
