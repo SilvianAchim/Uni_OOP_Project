@@ -14,7 +14,7 @@ int main() {
 
     try {
         Person person("John Doe", 18);
-        const Dollar dollar;
+        auto& dollar = Dollar::GetDollar();
 
         Bank bank("Bank of America", "BOFAUS3N");
 
